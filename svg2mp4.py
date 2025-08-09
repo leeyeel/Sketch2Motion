@@ -9,7 +9,7 @@ delay = float(sys.argv[-3]) if sys.argv[-3].replace('.', '', 1).isdigit() else 0
 scale = float(sys.argv[-2]) if sys.argv[-2].replace('.', '', 1).isdigit() else 2.0
 draw_type = sys.argv[-1] if sys.argv[-1] in ["linear", "smooth", "there_and_back", "wiggle"] else "smooth"
 
-# 设置 Manim 配置
+# Define the drawing functions
 draw_dict = {
     "linear": linear,
     "smooth": smooth,
@@ -28,18 +28,18 @@ class DrawSVG(Scene):
         paths = SVGMobject(svg_file)
         paths.set_fill(BLACK, opacity=1).set_stroke(opacity=0)
 
-        # 将 SVG 放置在屏幕中央并缩放
+        # calculate the bounding box of the SVG object, and move it to the center
         paths.scale(scale)
         paths.move_to(ORIGIN)
 
-        # 初始将所有子路径填充透明
+        # set all subpaths to transparent
         for subpath in paths:
             subpath.set_fill(BLACK, opacity=0)
 
         #paths= sorted(paths, key=lambda p: p.get_width()*p.get_height())
         animations = [subpath.animate.set_fill(BLACK, 1) for subpath in paths]
 
-        # 动画：使用 Create 绘制路径
+        # draw the SVG object
         self.play(
             LaggedStart(
                 *animations,
@@ -50,7 +50,6 @@ class DrawSVG(Scene):
         )
         self.wait(1)
 
-# 执行：
 # manim -pql svg2mp4.py DrawSVG
 
 
