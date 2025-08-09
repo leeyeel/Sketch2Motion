@@ -1,8 +1,3 @@
-Alright — here’s a clean **English `README.md`** draft for your project, with the preview image at the very top, followed by introduction, installation, and usage instructions.
-
----
-
-````markdown
 ![Sketch to Motion Preview](asset/preview.gif)
 
 # Sketch to Motion
@@ -33,7 +28,7 @@ It also prepends the last frame to the start of the video, creating a short paus
 ### 1. Clone this repository
 ```bash
 git clone https://github.com/yourusername/sketch-to-motion.git
-cd sketch-to-motion
+cd Sketch2Motion
 ````
 
 ### 2. Install Python dependencies
